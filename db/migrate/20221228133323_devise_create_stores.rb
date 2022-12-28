@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateBusinesses < ActiveRecord::Migration[6.1]
+class DeviseCreateStores < ActiveRecord::Migration[6.1]
   def change
-    create_table :businesses do |t|
+    create_table :stores do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -31,14 +31,16 @@ class DeviseCreateBusinesses < ActiveRecord::Migration[6.1]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
-
+      
+      t.string :store_name
+      t.text :store_introduction
+      
       t.timestamps null: false
     end
 
-    add_index :businesses, :email,                unique: true
-    add_index :businesses, :reset_password_token, unique: true
-    # add_index :businesses, :confirmation_token,   unique: true
-    # add_index :businesses, :unlock_token,         unique: true
+    add_index :stores, :email,                unique: true
+    add_index :stores, :reset_password_token, unique: true
+    # add_index :stores, :confirmation_token,   unique: true
+    # add_index :stores, :unlock_token,         unique: true
   end
 end
